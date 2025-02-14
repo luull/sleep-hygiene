@@ -1,10 +1,35 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
 
 export default function Hygiene() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Cek tema dari localStorage saat komponen dimuat
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setDarkMode(savedTheme === 'dark');
+    }
+  }, []);
+
+  // Update tema saat state darkMode berubah
+  useEffect(() => {
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
 
   const hygieneItems = [
     {
@@ -34,7 +59,8 @@ export default function Hygiene() {
     {
       title: "Mengatur Pola Makan dan Minum",
       content: "Hindari makan dalam porsi besar atau minum banyak cairan menjelang tidur untuk mencegah ketidaknyamanan dan sering terbangun di malam hari."
-    }
+    },
+
   ];
 
   const toggleAccordion = (index) => {
@@ -42,31 +68,42 @@ export default function Hygiene() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
       <Head>
         <title>Sleep Hygiene - Sleep Hygiene</title>
         <meta name="description" content="Temukan kebiasaan untuk meningkatkan kualitas tidur." />
       </Head>
+  {/* Tombol Toggle Dark Mode */}
+  <button
+        onClick={toggleDarkMode}
+        className="fixed top-4 right-4 text-2xl p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-800"
+      >
+        {darkMode ? (
+          <MdOutlineLightMode className="text-yellow-400" />
+        ) : (
+          <MdDarkMode className="text-gray-800" />
+        )}
+      </button>
 
       <main className="flex flex-col items-center justify-center flex-1 px-4 py-8 w-full max-w-4xl">
-        <h1 className="text-4xl font-bold text-blue-800 mb-6">
+        <h1 className="text-4xl font-bold text-blue-800 dark:text-blue-400 mb-6">
           Sleep Hygiene
         </h1>
 
-        <p className="mb-8 text-lg text-gray-700 text-left">
-          Sleep hygiene adalah serangkaian praktik dan kebiasaan yang bertujuan untuk meningkatkan kualitas tidur. Berikut adalah beberapa langkah yang dapat diterapkan:
-        </p>
+
+        <p className="mb-8 text-lg text-gray-700 dark:text-gray-300 text-left">
+        adalah serangkaian kebiasaan yang membantu seseorang mendapatkan tidur yang lebih berkualitas. Menurut penelitian, sleep hygiene yang buruk dapat menyebabkan gangguan tidur seperti insomnia dan meningkatkan risiko penyakit jantung serta gangguan mental (Hirshkowitz et al., 2015).  </p>
 
         <div className="w-full space-y-2">
           {hygieneItems.map((item, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg overflow-hidden bg-white">
+            <div key={index} className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800">
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50 focus:outline-none"
+                className="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none"
               >
-                <span className="font-medium text-left text-black">{item.title}</span>
+                <span className="font-medium text-left text-black dark:text-white">{item.title}</span>
                 <svg
-                  className={`w-5 h-5 transform text-black transition-transform duration-200 ${
+                  className={`w-5 h-5 transform text-black dark:text-white transition-transform duration-200 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                   fill="none"
@@ -86,25 +123,25 @@ export default function Hygiene() {
                   openIndex === index ? 'max-h-40 py-3' : 'max-h-0'
                 }`}
               >
-                <p className="text-gray-600">{item.content}</p>
+                <p className="text-gray-600 dark:text-gray-300">{item.content}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-8">
-          <Link href="/" className="text-blue-600 hover:text-blue-800">
+          <Link href="/" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-500">
             &larr; Kembali ke Beranda
           </Link>
         </div>
       </main>
 
-      <footer className="w-full h-20 flex items-center justify-center border-t border-gray-200 bg-white">
+      <footer className="w-full h-20 flex items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
         <a
           href="https://example.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800"
+          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-500"
         >
           Reza Muhammad Alghifari
         </a>
