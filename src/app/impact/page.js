@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Impact() {
   const [darkMode, setDarkMode] = useState(false);
@@ -65,59 +66,73 @@ const toggleDropdown = (index) => {
           Kualitas tidur yang baik berkontribusi terhadap optimalisasi proses belajar. Tidur yang cukup membantu konsolidasi memori dan meningkatkan fokus. Sebaliknya, kurang tidur dapat menyebabkan kesulitan berkonsentrasi, menurunkan daya serap informasi, serta berdampak negatif pada performa akademik mahasiswa (Salikunna et al., 2022).
         </p>
         <div className="w-full space-y-3 mt-6">
-  <h2 className="text-lg  text-left text-gray-800 dark:text-gray-800">Dampak Negatif Kurang Tidur : </h2>
+  <h2 className="text-lg  text-left text-gray-800 dark:text-white">Dampak Negatif Kurang Tidur : </h2>
   {[
-    {
-      title: 'Menurunkan konsentrasi dan daya ingat',
-      content: 'Studi menunjukkan bahwa kurang tidur dapat mengurangi fungsi kognitif hingga 30% (Walker, 2017).'
-    },
-    {
-      title: 'Meningkatkan risiko penyakit kronis',
-      content: 'Gangguan tidur jangka panjang berhubungan dengan peningkatan risiko diabetes dan tekanan darah tinggi (Cappuccio et al., 2010).'
-    },
-    {
-      title: 'Mengganggu keseimbangan emosional',
-      content: 'Kurang tidur dikaitkan dengan peningkatan kecemasan dan depresi (Baglioni et al., 2011).'
-    }
-  ].map((item, index) => (
-    <div key={index} className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-      <button
-        onClick={() => toggleDropdown(index)}
-        aria-expanded={openIndex === index}
-        aria-controls={`content-negative-${index}`}
-        className="w-full px-4 py-3 flex justify-between items-center bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-      >
-        <span className="font-medium text-left text-gray-700 dark:text-gray-300">
-          {item.title}
-        </span>
-        <svg
-          className={`w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300 ${
-            openIndex === index ? 'rotate-180' : ''
-          }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </button>
-      <div
-        id={`content-negative-${index}`}
-        className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-          openIndex === index ? 'max-h-40' : 'max-h-0'
+  {
+    title: 'Menurunkan konsentrasi dan daya ingat',
+    content: 'Studi menunjukkan bahwa kurang tidur dapat mengurangi fungsi kognitif hingga 30% (Walker, 2017).',
+    image: '/tips/12.jpg'
+  },
+  {
+    title: 'Meningkatkan risiko penyakit kronis',
+    content: 'Gangguan tidur jangka panjang berhubungan dengan peningkatan risiko diabetes dan tekanan darah tinggi (Cappuccio et al., 2010).',
+    image: '/tips/13.jpg'
+  },
+  {
+    title: 'Mengganggu keseimbangan emosional',
+    content: 'Kurang tidur dikaitkan dengan peningkatan kecemasan dan depresi (Baglioni et al., 2011).',
+    image: '/tips/14.jpg'
+  }
+].map((item, index) => (
+  <div key={index} className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+    <button
+      onClick={() => toggleDropdown(index)}
+      aria-expanded={openIndex === index}
+      aria-controls={`content-negative-${index}`}
+      className="w-full px-4 py-3 flex justify-between items-center bg-white dark:bg-gray-800 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+    >
+      <span className="font-medium text-left text-gray-700 dark:text-gray-300">
+        {item.title}
+      </span>
+      <svg
+        className={`w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300 ${
+          openIndex === index ? 'rotate-180' : ''
         }`}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        <div className="px-4 py-3 text-gray-600 dark:text-gray-400 text-left border-t border-gray-100 dark:border-gray-700">
-          {item.content}
-        </div>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </button>
+    <div
+      id={`content-negative-${index}`}
+      className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+        openIndex === index ? 'max-h-[600px]' : 'max-h-0'
+      }`}
+    >
+      <div className="px-4 py-3 text-gray-600 dark:text-gray-400 text-left border-t border-gray-100 dark:border-gray-700">
+        <p>{item.content}</p>
+        <br/>
+        <Image
+            src={item.image}
+            alt={item.title}
+            layout="responsive"
+            width={800}
+            height={450}
+            objectFit="cover"
+            className="rounded-lg"
+          />
       </div>
     </div>
-  ))}
+  </div>
+))}
+
 </div>
 
 

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
 
 export default function Tips() {
@@ -33,56 +34,69 @@ export default function Tips() {
   const tipsItems = [
     {
       title: "Kurangi Cahaya Berlebih",
-      content: "Gunakan lampu tidur redup atau blackout curtain agar suasana lebih gelap."
+      content: "Gunakan lampu tidur redup atau blackout curtain agar suasana lebih gelap.",
+      image: "/tips/7.jpg"
     },
     {
       title: "Atur Suhu Ruangan",
-      content: "Suhu ideal untuk tidur berkisar 18–22°C. Gunakan kipas atau AC jika diperlukan."
+      content: "Suhu ideal untuk tidur berkisar 18–22°C. Gunakan kipas atau AC jika diperlukan.",
+      image: "/tips/8.jpg"
     },
     {
       title: "Kurangi Kebisingan",
-      content: "Gunakan white noise atau penyumbat telinga jika lingkungan sekitar terlalu bising."
+      content: "Gunakan white noise atau penyumbat telinga jika lingkungan sekitar terlalu bising.",
+      image: "/tips/9.jpg"
     },
     {
       title: "Pilih Kasur dan Bantal yang Nyaman",
-      content: "Pastikan kasur tidak terlalu keras atau terlalu lembut untuk mendukung postur tubuh."
+      content: "Pastikan kasur tidak terlalu keras atau terlalu lembut untuk mendukung postur tubuh.",
+      image: "/tips/10.jpg"
     },
     {
       title: "Jauhkan Perangkat Elektronik",
-      content: "Hindari paparan cahaya biru dari ponsel atau laptop minimal 30 menit sebelum tidur."
+      content: "Hindari paparan cahaya biru dari ponsel atau laptop minimal 30 menit sebelum tidur.",
+      image: "/tips/11.jpg"
     },
     {
-      title: 'Jadwal Tidur Konsisten',
-      content:
-        'Jaga jadwal tidur yang konsisten setiap hari. Tidur dan bangun di waktu yang sama membantu mengatur ritme tubuh alami Anda.',
+      title: "Menjaga Jadwal Tidur yang Konsisten",
+      content: "Pergi tidur dan bangun pada waktu yang sama setiap hari.",
+      image: "/tips/1.jpg"
     },
     {
-      title: 'Lingkungan Tidur Nyaman',
-      content:
-        'Ciptakan lingkungan tidur yang nyaman dengan pencahayaan redup dan suhu yang sejuk. Pastikan kamar tidur Anda tenang dan menggunakan peralatan tidur yang nyaman.',
+      title: "Menciptakan Lingkungan Tidur yang Nyaman",
+      content: "Pastikan kamar tidur tenang, gelap, dan memiliki suhu yang nyaman.",
+      image: "/tips/2.jpg"
     },
     {
-      title: 'Hindari Kafein dan Alkohol',
-      content:
-        'Hindari kafein dan alkohol sebelum tidur. Kedua zat ini dapat mengganggu kualitas tidur Anda dan menyebabkan tidur yang tidak nyenyak.',
+      title: "Menghindari Kafein dan Nikotin",
+      content: "Batasi konsumsi kafein dan nikotin, terutama menjelang waktu tidur.",
+      image: "/tips/3.jpg"
     },
     {
-      title: 'Batasi Penggunaan Gadget',
-      content:
-        'Batasi penggunaan gadget sebelum tidur untuk mengurangi paparan cahaya biru. Cahaya dari layar elektronik dapat mengganggu produksi hormon tidur alami tubuh.',
+      title: "Membatasi Tidur Siang",
+      content: "Jika perlu tidur siang, batasi durasinya hingga maksimal 30 menit.",
+      image: "/tips/4.jpg"
     },
     {
-      title: 'Lakukan Relaksasi',
-      content:
-        'Lakukan relaksasi seperti meditasi atau membaca buku sebelum tidur. Kegiatan menenangkan membantu menyiapkan tubuh dan pikiran untuk tidur.',
+      title: "Melakukan Aktivitas Relaksasi Sebelum Tidur",
+      content: "Lakukan rutinitas yang menenangkan sebelum tidur.",
+      image: "/tips/5.png"
     },
-
+    {
+      title: "Membatasi Paparan Layar Elektronik",
+      content: "Hindari penggunaan perangkat elektronik setidaknya satu jam sebelum tidur.",
+      image: "/tips/5.jpg"
+    },
+    {
+      title: "Mengatur Pola Makan dan Minum",
+      content: "Hindari makan dalam porsi besar atau minum banyak cairan menjelang tidur.",
+      image: "/tips/6.jpeg"
+    },
   ];
 
   const toggleDropdown = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
@@ -90,7 +104,7 @@ export default function Tips() {
         <title>Tips Praktis - Sleep Hygiene</title>
         <meta name="description" content="Dapatkan tips untuk tidur yang lebih baik." />
       </Head>
-         {/* Tombol Toggle Dark Mode */}
+
       <button
         onClick={toggleDarkMode}
         className="fixed top-4 right-4 text-2xl p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-800"
@@ -101,12 +115,11 @@ export default function Tips() {
           <MdDarkMode className="text-gray-800" />
         )}
       </button>
+
       <main className="flex flex-col items-center justify-center flex-1 px-4 py-8 w-full max-w-4xl">
         <h1 className="text-4xl font-bold text-blue-800 dark:text-blue-400 mb-6">
           Tips Praktis untuk Tidur lebih berkualitas
         </h1>
-
-    
 
         <div className="w-full space-y-3">
           {tipsItems.map((item, index) => (
@@ -139,11 +152,21 @@ export default function Tips() {
               <div
                 id={`content-${index}`}
                 className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-                  openIndex === index ? 'max-h-40' : 'max-h-0'
+                  openIndex === index ? 'max-h-[600px]' : 'max-h-0'
                 }`}
               >
                 <div className="px-4 py-3 text-gray-600 dark:text-gray-400 text-left border-t border-gray-100 dark:border-gray-700">
-                  {item.content}
+                  <p>{item.content}</p>
+                    <br/>
+                      <Image
+                          src={item.image}
+                          alt={item.title}
+                          layout="responsive"
+                          width={800}
+                          height={450}
+                          objectFit="cover"
+                          className="rounded-lg"
+                        />
                 </div>
               </div>
             </div>
