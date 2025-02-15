@@ -4,7 +4,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
-import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
+import { MdOutlineLightMode, MdDarkMode, MdOutlineTipsAndUpdates } from 'react-icons/md';
+import { LuMessageSquareWarning } from "react-icons/lu";
+import { GiNightSleep } from "react-icons/gi";
+import { BiSleepy } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -32,6 +36,12 @@ export default function Home() {
   };
 
   return (
+    <motion.div
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -50, opacity: 0 }}
+    transition={{ duration: 0.4 }}
+  >
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
       <Head>
         <title>Sleep Hygiene</title>
@@ -69,26 +79,36 @@ export default function Home() {
         </p>
         <hr className="border-gray-300 dark:border-gray-600" />
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-          <Link href="/concept" className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Konsep Tidur &rarr;</h2>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">Pelajari pentingnya tidur dan kualitas tidur.</p>
-          </Link>
-
-          <Link href="/hygiene" className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Sleep Hygiene &rarr;</h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl">
+        <Link href="/concept" className="relative p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-visible">
+          <div className="absolute -top-8 -left-2 md:-top-8 md:-left-8">
+            <GiNightSleep className="w-20 h-20 text-blue-700 dark:text-blue-300" />
+          </div>
+          <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Konsep Tidur &rarr;</h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Pelajari pentingnya tidur dan kualitas tidur.</p>
+        </Link>
+        <Link href="/hygiene" className="relative p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-visible">
+          <div className="absolute -top-8 -right-2 md:-top-8 md:-right-8">
+            <BiSleepy className="w-20 h-20 text-blue-700 dark:text-blue-300" />
+          </div>
+          <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Sleep Hygiene &rarr;</h2>
             <p className="mt-2 text-gray-600 dark:text-gray-400">Temukan kebiasaan untuk meningkatkan kualitas tidur.</p>
-          </Link>
+        </Link>
 
-          <Link href="/impact" className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Dampak &rarr;</h2>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">Pahami dampak tidur terhadap konsentrasi belajar dan dampak negatif.</p>
-          </Link>
-
-          <Link href="/tips" className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-            <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Tips Praktis &rarr;</h2>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">Dapatkan tips untuk tidur yang lebih baik dan berkualitas.</p>
-          </Link>
+          <Link href="/impact" className="relative p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-visible">
+          <div className="absolute -top-8 -left-2 md:-top-8 md:-left-10">
+            <LuMessageSquareWarning className="w-20 h-20 text-blue-700 dark:text-blue-300" />
+          </div>
+          <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Dampak &rarr;</h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Pahami dampak tidur terhadap konsentrasi belajar dan dampak negatif.</p>
+        </Link>
+          <Link href="/tips" className="relative p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-visible">
+          <div className="absolute -top-8 -right-2 md:-top-8 md:-right-10">
+            <MdOutlineTipsAndUpdates className="w-20 h-20 text-blue-700 dark:text-blue-300" />
+          </div>
+          <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-300">Tips Praktis &rarr;</h2>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Dapatkan tips untuk tidur yang lebih baik dan berkualitas.</p>
+        </Link>
         </div>
       </main>
 
@@ -99,5 +119,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    </motion.div>
   );
 }

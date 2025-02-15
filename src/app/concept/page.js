@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { motion } from "framer-motion";
 import Link from 'next/link';
 import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
 
@@ -30,6 +31,12 @@ export default function Concept() {
   };
 
   return (
+    <motion.div
+    initial={{ opacity: 0, x: 100 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -100 }}
+    transition={{ duration: 0.3 }}
+  >
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <Head>
         <title>Konsep Tidur - Sleep Hygiene</title>
@@ -77,5 +84,6 @@ export default function Concept() {
         </a>
       </footer>
     </div>
+    </motion.div>
   );
 }

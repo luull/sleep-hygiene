@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { motion } from "framer-motion";
 import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
 
 export default function Hygiene() {
@@ -36,6 +37,12 @@ export default function Hygiene() {
   };
 
   return (
+    <motion.div
+    initial={{ opacity: 0, x: 100 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -100 }}
+    transition={{ duration: 0.3 }}
+  >
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
       <Head>
         <title>Sleep Hygiene - Sleep Hygiene</title>
@@ -61,15 +68,7 @@ export default function Hygiene() {
 
         <p className="mb-8 text-lg text-gray-700 dark:text-gray-300 text-left">
         Sleep Hygiene adalah serangkaian kebiasaan yang membantu seseorang mendapatkan tidur yang lebih berkualitas. Menurut penelitian, sleep hygiene yang buruk dapat menyebabkan gangguan tidur seperti insomnia dan meningkatkan risiko penyakit jantung serta gangguan mental (Hirshkowitz et al., 2015).  </p>
-        <p className="mb-8 text-lg text-gray-700 dark:text-gray-300 text-left">
-        Sleep hygiene bekerja dengan cara membantu mengatur ritme sirkadian tubuh, yaitu siklus alami yang mengatur waktu tidur dan bangun. Ketika seseorang memiliki pola tidur yang konsisten dan melakukan kebiasaan yang mendukung tidur, ritme sirkadian akan lebih mudah beradaptasi dan bekerja dengan efisien. Hal ini dapat mengurangi risiko gangguan tidur seperti sulit tidur, sering terbangun di malam hari, atau bangun terlalu dini. (Alodokter)
-        </p>
-        <p className="mb-8 text-lg text-gray-700 dark:text-gray-300 text-left">
-        Tidak hanya berdampak pada kualitas tidur, sleep hygiene juga mempengaruhi kesehatan secara keseluruhan. Tidur yang berkualitas dapat meningkatkan fungsi kognitif, memperbaiki suasana hati, memperkuat sistem kekebalan tubuh, dan menurunkan risiko penyakit kronis seperti diabetes, obesitas, dan penyakit jantung. Selain itu, tidur yang cukup dan nyenyak membantu meningkatkan konsentrasi, daya ingat, dan produktivitas dalam menjalani aktivitas sehari-hari. (Sleep Foundation)
-        </p>
-        <p className="mb-8 text-lg text-gray-700 dark:text-gray-300 text-left">
-        Sleep hygiene tidak hanya bermanfaat bagi mereka yang memiliki gangguan tidur, tetapi juga bagi semua orang yang ingin mempertahankan kesehatan fisik dan mental yang optimal. Dengan menjaga kebiasaan tidur yang baik dan menghindari hal-hal yang dapat mengganggu kualitas tidur, seseorang dapat memperoleh manfaat jangka panjang bagi kesehatan dan kesejahteraan secara keseluruhan (Sleep Foundation).
-        </p>
+
         <div className="mt-8">
           <Link href="/" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-500">
             &larr; Kembali ke Beranda
@@ -88,5 +87,6 @@ export default function Hygiene() {
         </a>
       </footer>
     </div>
+    </motion.div>
   );
 }

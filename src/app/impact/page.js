@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Image from 'next/image';
+import { motion } from "framer-motion";
 
 export default function Impact() {
   const [darkMode, setDarkMode] = useState(false);
@@ -39,6 +40,12 @@ const toggleDropdown = (index) => {
   };
 
   return (
+    <motion.div
+    initial={{ opacity: 0, x: 100 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -100 }}
+    transition={{ duration: 0.3 }}
+  >
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900">
       <Head>
         <title>Dampak Tidur - Sleep Hygiene</title>
@@ -155,5 +162,6 @@ const toggleDropdown = (index) => {
         </a>
       </footer>
     </div>
+    </motion.div>
   );
 }
