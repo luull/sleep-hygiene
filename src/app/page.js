@@ -7,7 +7,9 @@ import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
 import { MdOutlineLightMode, MdDarkMode, MdOutlineTipsAndUpdates } from 'react-icons/md';
 import { LuMessageSquareWarning } from "react-icons/lu";
 import { GiNightSleep } from "react-icons/gi";
+import { LuBookMarked } from "react-icons/lu";
 import { BiSleepy } from "react-icons/bi";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -60,7 +62,7 @@ export default function Home() {
         )}
       </button>
 
-      <main className="flex flex-col items-center justify-center my-5 flex-1 px-4 text-center">
+      <main className="flex flex-col items-center justify-center my-10 flex-1 px-4 text-center">
         <div className="w-full max-w-2xl mb-8">
           <Image
             src="/sleep.jpg"
@@ -110,14 +112,42 @@ export default function Home() {
           <p className="mt-2 text-gray-600 dark:text-gray-400">Dapatkan tips untuk tidur yang lebih baik dan berkualitas.</p>
         </Link>
         </div>
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-1 max-w-4xl">
+        <Link href="/pustaka" className="relative p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow overflow-visible">
+          <div className="absolute -top-8 -left-2 md:-top-8 md:-left-8">
+            
+          </div>
+          <h2 className="text-2xl space-x-3 flex flex-row items-center font-semibold text-blue-700 dark:text-blue-300"><LuBookMarked className="w-6 h-6 text-blue-700 dark:text-blue-300" />Daftar Pustaka </h2>
+          {/* <p className="mt-2 text-gray-600 dark:text-gray-400">Pelajari pentingnya tidur dan kualitas tidur.</p> */}
+        </Link>
+        </div>
       </main>
 
-      <footer className="w-full h-20 flex items-center justify-center border-t border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-6 text-center">
-          <p className="text-gray-600 dark:text-gray-400">© 2025 Reza Muhammad Alghifari</p>
-         
-        </div>
-      </footer>
+      <footer className="w-full flex items-center justify-center border-t border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
+  <div className="max-w-7xl mx-auto px-4 py-6 text-center">
+    <p className="text-gray-600 dark:text-gray-400">© 2025 Reza Muhammad Alghifari</p>
+    <div className="flex justify-center space-x-6 mt-2">
+      <a
+        href="https://wa.me/6285846638235"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 dark:text-gray-400 hover:text-green-500 flex items-center space-x-2"
+      >
+        <FaWhatsapp size={20} />
+        <span>085846638235</span>
+      </a>
+      <a
+        href="https://instagram.com/rrezalghifari"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 dark:text-gray-400 hover:text-pink-500 flex items-center space-x-2"
+      >
+        <FaInstagram size={20} />
+        <span>@rrezalghifari</span>
+      </a>
+    </div>
+  </div>
+</footer>
     </div>
     </motion.div>
   );

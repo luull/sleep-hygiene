@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { motion } from "framer-motion";
 import { MdOutlineLightMode, MdDarkMode } from 'react-icons/md';
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import Image from 'next/image';
 
-export default function Hygiene() {
+export default function Pustaka() {
   const [openIndex, setOpenIndex] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -61,33 +60,44 @@ export default function Hygiene() {
           <MdDarkMode className="text-gray-800" />
         )}
       </button>
-
       <main className="flex flex-col my-5 items-center justify-center flex-1 px-4 py-8 w-full max-w-4xl">
-        <h1 className="text-4xl text-left md:text-center font-bold text-blue-800 dark:text-blue-400 mb-6">
-          Sleep Hygiene
-        </h1>
-            <Image
-                                  src={'/tips/15.jpg'}
-                                  alt={"sleep-hygiene"}
-                                  layout="responsive"
-                                  width={500}
-                                  height={350}
-                                  objectFit="cover"
-                                  className="rounded-lg"
-                                />
+  <h1 className="text-4xl text-left md:text-center font-bold text-blue-800 dark:text-blue-400 mb-6">
+    Daftar Pustaka
+  </h1>
+
+  <ul className="list-decimal list-inside text-lg text-gray-700 dark:text-gray-300 text-left space-y-4">
+    <li>
+      Amelia, R., Harsa, R., & Siana, Y. (2022). Hubungan kualitas tidur terhadap prestasi akademik mahasiswa kedokteran Universitas Baiturrahmah. Maret, 28(1).
+    </li>
+    <li>
+      Irawan, I., & Hasibuan, U. (2024). Pengaruh Kurang Tidur Terhadap Short Term Memory Pada Mahasiswa Kedokteran Universitas Malikussaleh. 9–10.
+    </li>
+    <li>
+      Irish, L. A., Kline, C. E., Gunn, H. E., Buysse, D. J., & Hall, M. H. (2015). The role of sleep hygiene in promoting public health: A review of empirical evidence. In Sleep Medicine Reviews (Vol. 22, pp. 23–36). W.B. Saunders Ltd. <a href="https://doi.org/10.1016/j.smrv.2014.10.001" target="_blank" className="text-blue-600 dark:text-blue-400 hover:underline">https://doi.org/10.1016/j.smrv.2014.10.001</a>
+    </li>
+    <li>
+      Salikunna, N. A., Didik Astiawan, W., Handayani, F., & Ramadhan, M. Z. (2022). Hubungan antara kualitas tidur dengan tingkat konsentrasi pada mahasiswa. Healthy Tadulako Journal (Jurnal Kesehatan Tadulako), 8(3), 157–163.
+    </li>
+    <li>
+      Sina, I., Kedokteran dan Kesehatan-Fakultas Kedokteran Universitas Islam Sumatera Utara, J., Penelitian, A., & Bisma Kuncara, D. (2021). Hubungan kualitas tidur terhadap indeks prestasi semester pada mahasiswa Fakultas Teknik Universitas Islam Sumatera Utara pada tahun 2020. 20.
+    </li>
+    <li>
+      Takeda, N., & Maemura, K. (2011). Circadian clock and cardiovascular disease. Journal of Cardiology, 57(3), 249–256. <a href="https://doi.org/10.1016/j.jjcc.2011.02.006" target="_blank" className="text-blue-600 dark:text-blue-400 hover:underline">https://doi.org/10.1016/j.jjcc.2011.02.006</a>
+    </li>
+    <li>
+      Sleep hygiene: Simple practices for better rest by Jessica Solodar, Health Writer (Harvard)
+    </li>
+  </ul>
+
+  <div className="mt-8">
+    <Link href="/" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-500">
+      &larr; Kembali ke Beranda
+    </Link>
+  </div>
+</main>
 
 
-        <p className="mt-4 mb-8 text-lg text-gray-700 dark:text-gray-300 text-left">
-        Sleep Hygiene adalah serangkaian kebiasaan yang membantu seseorang mendapatkan tidur yang lebih berkualitas. Menurut penelitian, sleep hygiene yang buruk dapat menyebabkan gangguan tidur seperti insomnia dan meningkatkan risiko penyakit jantung serta gangguan mental (Hirshkowitz et al., 2015).  </p>
-
-        <div className="mt-8">
-          <Link href="/" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-500">
-            &larr; Kembali ke Beranda
-          </Link>
-        </div>
-      </main>
-
-      <footer className="w-full flex items-center justify-center border-t border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
+<footer className="w-full flex items-center justify-center border-t border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
   <div className="max-w-7xl mx-auto px-4 py-6 text-center">
     <p className="text-gray-600 dark:text-gray-400">© 2025 Reza Muhammad Alghifari</p>
     <div className="flex justify-center space-x-6 mt-2">

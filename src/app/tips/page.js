@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from "framer-motion";
 import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md';
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Tips() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -123,8 +124,8 @@ export default function Tips() {
         )}
       </button>
 
-      <main className="flex flex-col items-center justify-center flex-1 px-4 py-8 w-full max-w-4xl">
-        <h1 className="text-4xl font-bold text-blue-800 dark:text-blue-400 mb-6">
+      <main className="flex flex-col my-5 items-center justify-center flex-1 px-4 py-8 w-full max-w-4xl">
+        <h1 className="text-4xl text-left md:text-center font-bold text-blue-800 dark:text-blue-400 mb-6">
           Tips Praktis untuk Tidur lebih berkualitas
         </h1>
 
@@ -185,16 +186,31 @@ export default function Tips() {
         </Link>
       </main>
 
-      <footer className="w-full h-20 flex items-center justify-center border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-        <a
-          href="https://example.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-        >
-          Reza Muhammad Alghifari
-        </a>
-      </footer>
+      <footer className="w-full flex items-center justify-center border-t border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
+  <div className="max-w-7xl mx-auto px-4 py-6 text-center">
+    <p className="text-gray-600 dark:text-gray-400">© 2025 Reza Muhammad Alghifari</p>
+    <div className="flex justify-center space-x-6 mt-2">
+      <a
+        href="https://wa.me/6285846638235"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 dark:text-gray-400 hover:text-green-500 flex items-center space-x-2"
+      >
+        <FaWhatsapp size={20} />
+        <span>085846638235</span>
+      </a>
+      <a
+        href="https://instagram.com/rrezalghifari"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-600 dark:text-gray-400 hover:text-pink-500 flex items-center space-x-2"
+      >
+        <FaInstagram size={20} />
+        <span>@rrezalghifari</span>
+      </a>
+    </div>
+  </div>
+</footer>
     </div>
     </motion.div>
   );
